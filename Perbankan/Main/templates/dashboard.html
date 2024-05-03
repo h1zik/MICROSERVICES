@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Basic CSS for dashboard layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0079C1;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            width: 300px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+        }
+        .logout-btn {
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-decoration: none;
+        }
+        .logout-btn:hover {
+            background-color: #cc3700;
+        }
+        .fa-sign-out-alt {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome {{ username }}</h1> <!-- Display the username here, using Jinja templating syntax -->
+    </div>
+    <div class="container">
+        <!-- Example card 1 -->
+        <div class="card">
+            <h2>Account Balance</h2>
+            <p>${{ balance }}</p> <!-- Display the balance here, formatted to 2 decimal places -->
+        </div>
+        <form action="/topup-form" method="get">
+            <button type="submit">Top-Up</button>
+        </form>
+        <!-- Example card 2 -->
+        <div class="card">
+            <h2>Email</h2>
+            <ul>
+                <li>{{ email }}</li>
+                <!-- Add more transaction items here -->
+            </ul>
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
+    <!-- Logout button -->
+    <form action="/logout" method="GET">
+        <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </form>
+</body>
+</html>
